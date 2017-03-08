@@ -38,24 +38,33 @@ function timer(i) {
 function startGame(){
 	$("#playButton").hide();
 	$(".display").show();
+	// Set timer in seconds
 	timer(30);
 	for (i=0; i<quizQuestions.length; i++) {
+		// Create a div for each question
 		$("#trivia").append("<div id='questionAndChoices"+i+"'></div>");
+		// Place each question in their own div
 		$("#questionAndChoices"+i).append("<div id='question"+i+"'>"+quizQuestions[i].question+"</div><br>");
+		// Append the question's choices to it as radio buttons
 		$("#question"+i).after("<div id='choices"+i+"'></div>");
 		for (j=0;j<quizQuestions[i].choices.length;j++){
+			// Give them a unique id, shared name, and a data value equal to its choice for each radio button
 			$("#choices"+i).append("<input type='radio' id='choice"+i+j+"' name='choice"+i+"' data-value='"+quizQuestions[i].choices[j]+"'>"+quizQuestions[i].choices[j]+" ");
 		}
 	}
 }
+// When the timer runs out or the submit button is clicked
 function checkAnswer(){
 	$("#submitButton").hide();
 	for (var i=0; i<quizQuestions.length; i++){
+		// Look at checked buttons data to check answers
+		// Check answers by seeing if the data-value (which is the button choice) equals answer
+		// If correct, update correct counter and change question background to green
 		if ($("input[name='choice"+i+"']:checked").data("value") === quizQuestions[i].answer){
 			counter++;
-			// $("#endGeameText").html(counter + " correct.");
 			$("#questionAndChoices"+i).css("background", "rgb(162,218,165)");
 		}
+		// If wrong, change question background to red
 		else {
 			$("#questionAndChoices"+i).css("background", "rgb(224,141,141)");
 		}
@@ -67,6 +76,7 @@ $("#playButton").on("click", function(){
 });
 
 $("#submitButton").on("click", function(){
+	// Freeze timer
 	clearInterval(num);
 	checkAnswer();
 });
