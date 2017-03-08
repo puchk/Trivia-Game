@@ -1,0 +1,40 @@
+body {
+	background: url("../images/background.jpg");
+
+}
+
+.display {
+	display: none;
+}
+
+/*.container {
+	background: white;
+	opacity: .9;
+	height: 80%;
+	margin-top:20px;
+	padding: 20px;
+}*/
+
+.col-md-4{
+	background: white;
+	margin-top: 10px;
+}
+
+#title {
+	text-align: center;
+}
+
+#playButton {
+	margin-bottom: 10px;
+}
+
+#trivia {
+	padding: 10px;
+}
+#submitButton {
+	margin: 10px;
+}
+
+.alignCenter{
+	text-align: center;
+}
